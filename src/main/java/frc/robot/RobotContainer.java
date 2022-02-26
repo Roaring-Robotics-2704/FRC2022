@@ -16,6 +16,7 @@ import frc.robot.subsystems.BallActuator;
 import frc.robot.subsystems.Drivetrain;
 import frc.robot.subsystems.Winch;
 import frc.robot.subsystems.Arm;
+import frc.robot.subsystems.Camera;
 
 /**
  * This class is where the bulk of the robot should be declared. Since Command-based is a
@@ -30,6 +31,7 @@ public class RobotContainer {
   public static BallActuator m_ballActuator = new BallActuator();
   public static Winch m_winch = new Winch();
   public static Arm m_arm = new Arm();
+  public static Camera camera = new Camera();
 
   //Commands defined
   public static DriveRobot m_driveRobot = new DriveRobot();
@@ -51,6 +53,9 @@ public class RobotContainer {
 
   public static JoystickButton addTurnSpeed = new JoystickButton(joystickMain, 11);
   public static JoystickButton subtractTurnSpeed = new JoystickButton(joystickMain, 12);
+
+  public static JoystickButton addDriveSpeed = new JoystickButton(joystickMain, 9);
+  public static JoystickButton subtractDriveSpeed = new JoystickButton(joystickMain, 10);
 
   /** The container for the robot. Contains subsystems, OI devices, and commands. */
   public RobotContainer() {
@@ -82,6 +87,9 @@ public class RobotContainer {
 
     addTurnSpeed.whenPressed(new DriveRobot());
     subtractTurnSpeed.whenPressed(new DriveRobot());
+
+    addDriveSpeed.whenPressed(new DriveRobot());
+    subtractDriveSpeed.whenPressed(new DriveRobot());
   }
 
   /**

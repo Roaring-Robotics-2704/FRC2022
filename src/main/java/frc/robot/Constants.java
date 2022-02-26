@@ -35,4 +35,7 @@ public final class Constants {
     //drivetrain
     public static double c_deadBand = 0.00;
     public static double c_inputScaling = 1;
+
+    public static double c_driveSpeed = 0.5;
+    public static double c_turnSpeed = 0.5;
 }
