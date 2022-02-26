@@ -30,7 +30,8 @@ public final class Constants {
     public static int c_armMotor = 5;
     
     //joystick
-    public static int c_joystick = 0;
+    public static int c_joystickMain = 0;
+    public static int c_joystickButton = 1;
     //drivetrain
     public static double c_deadBand = 0.00;
     public static double c_inputScaling = 1;
