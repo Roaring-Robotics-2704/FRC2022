@@ -8,14 +8,8 @@ import edu.wpi.first.wpilibj.GenericHID;
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.XboxController;
 import edu.wpi.first.wpilibj2.command.button.JoystickButton;
-import frc.robot.commands.ArmCommand;
-import frc.robot.commands.BallCommand;
-import frc.robot.commands.DriveRobot;
-import frc.robot.commands.WinchCommand;
-import frc.robot.subsystems.BallActuator;
-import frc.robot.subsystems.Drivetrain;
-import frc.robot.subsystems.Winch;
-import frc.robot.subsystems.Arm;
+import frc.robot.commands.*;
+import frc.robot.subsystems.*;
 
 /**
  * This class is where the bulk of the robot should be declared. Since Command-based is a
@@ -36,6 +30,7 @@ public class RobotContainer {
   public static BallCommand m_ballCommand = new BallCommand();
   public static WinchCommand m_winchCommand = new WinchCommand();
   public static ArmCommand m_armCommand = new ArmCommand();
+  public static BallAutonomous ballAuto = new BallAutonomous();
 
   //OI defined
   public static Joystick joystick = new Joystick(Constants.c_joystick);
@@ -82,8 +77,9 @@ public class RobotContainer {
    *
    * @return the command to run in autonomous
    */
-  //public Command getAutonomousCommand() {
+  public Command getAutonomousCommand() {
     // An ExampleCommand will run in autonomous
     //return m_autoCommand;
-  //}
+    return ballAuto;
+  }
 }
