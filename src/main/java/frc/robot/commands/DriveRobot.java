@@ -12,7 +12,6 @@ import frc.robot.Constants;
 
 public class DriveRobot extends CommandBase {
   /** Creates a new DriveRobot. */
-double turnSpeed = 0.5;
   public DriveRobot() {
     // Use addRequirements() here to declare subsystem dependencies.
     addRequirements(RobotContainer.m_driveTrain);
@@ -29,63 +28,43 @@ double turnSpeed = 0.5;
 
   // Called every time the scheduler runs while the command is scheduled.
   @Override
+  // make sure can't go negative
+  // make it so it is press once and moves up on incrment, 0.2 !
+  // more on the inside so switch button !
+  // 0.4 !
+  
   public void execute() {
-    
-
-    Boolean increaseDriveSpeedPressed = RobotContainer.joystickMain.getRawButton(9);
-    Boolean decreaseDriveSpeedPressed = RobotContainer.joystickMain.getRawButton(10);
     SmartDashboard.putNumber("DriveSpeed", Constants.c_driveSpeed);
-    if(increaseDriveSpeedPressed){
-      Constants.c_driveSpeed = Constants.c_driveSpeed + 0.1;
-      SmartDashboard.putNumber("DriveSpeed", Constants.c_driveSpeed);
-    }
-    if(decreaseDriveSpeedPressed){
-      Constants.c_driveSpeed = Constants.c_driveSpeed - 0.1;
-      SmartDashboard.putNumber("DriveSpeed", Constants.c_driveSpeed);
-    }
-
-    Boolean increaseTurnSpeedPressed = RobotContainer.joystickMain.getRawButton(11);
-    Boolean decreaseTurnSpeedPressed = RobotContainer.joystickMain.getRawButton(12);
-    if(increaseTurnSpeedPressed){
-      Constants.c_turnSpeed = Constants.c_turnSpeed + 0.1;
-      SmartDashboard.putNumber("TurnSpeed", Constants.c_turnSpeed);
-    }
-    if(decreaseTurnSpeedPressed){
-      Constants.c_turnSpeed = Constants.c_turnSpeed - 0.1;
-      SmartDashboard.putNumber("TurnSpeed", Constants.c_turnSpeed);
-    }
-    /*
-    SmartDashboard.putNumber("TurnSpeed", turnSpeed);
-    if(RobotContainer.addTurnSpeed.get()){
-      turnSpeed = turnSpeed + 0.1;
-      if(turnSpeed >= 1){
-        turnSpeed = 1;
-      }
-      SmartDashboard.putNumber("TurnSpeed", turnSpeed);
-    }
-    if(RobotContainer.subtractTurnSpeed.get()){
-      turnSpeed = turnSpeed - 0.1;
-      if(turnSpeed <= 0.2){
-        turnSpeed = 0.2;
-      }
-      SmartDashboard.putNumber("TurnSpeed", turnSpeed);
-    }
-
-    SmartDashboard.putNumber("DriveSpeed", driveSpeed);
     if(RobotContainer.addDriveSpeed.get()){
-      driveSpeed = driveSpeed + 0.1;
-      if(driveSpeed >= 1){
-        driveSpeed = 1;
+      Constants.c_driveSpeed = Constants.c_driveSpeed + 0.2;
+      SmartDashboard.putNumber("DriveSpeed", Constants.c_driveSpeed);
+      if(Constants.c_driveSpeed >= 2){
+        Constants.c_driveSpeed = 2;
       }
-      SmartDashboard.putNumber("DriveSpeed", driveSpeed);
     }
     if(RobotContainer.subtractDriveSpeed.get()){
-      driveSpeed = driveSpeed - 0.1;
-      if(driveSpeed <= 0.2){
-        driveSpeed = 0.2;
+      Constants.c_driveSpeed = Constants.c_driveSpeed - 0.2;
+      SmartDashboard.putNumber("DriveSpeed", Constants.c_driveSpeed);
+      if(Constants.c_driveSpeed <= 0.4){
+        Constants.c_driveSpeed = 0.4;
       }
-      SmartDashboard.putNumber("DriveSpeed", driveSpeed);
-     }*/
+    }
+
+    SmartDashboard.putNumber("TurnSpeed", Constants.c_turnSpeed);
+    if(RobotContainer.addTurnSpeed.get()){
+      Constants.c_turnSpeed = Constants.c_turnSpeed + 0.2;
+      SmartDashboard.putNumber("TurnSpeed", Constants.c_turnSpeed);
+      if(Constants.c_turnSpeed >= 2){
+        Constants.c_turnSpeed = 2;
+      }
+    }
+    if(RobotContainer.subtractTurnSpeed.get()){
+      Constants.c_turnSpeed = Constants.c_turnSpeed - 0.2;
+      SmartDashboard.putNumber("TurnSpeed", Constants.c_turnSpeed);
+      if(Constants.c_turnSpeed <= 0.4){
+        Constants.c_turnSpeed = 0.4;
+      }
+    }
 
     //getx - along the x axis
     //gety - along the y axis

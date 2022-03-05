@@ -36,6 +36,6 @@ public final class Constants {
     public static double c_deadBand = 0.00;
     public static double c_inputScaling = 1;
 
-    public static double c_driveSpeed = 0.5;
-    public static double c_turnSpeed = 0.5;
+    public static double c_driveSpeed = 0.6;
+    public static double c_turnSpeed = 0.6;
 }

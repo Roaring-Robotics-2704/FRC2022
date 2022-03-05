@@ -51,11 +51,11 @@ public class RobotContainer {
   public static JoystickButton upArmButton = new JoystickButton(joystickMain, 7);
   public static JoystickButton downArmButton = new JoystickButton(joystickMain, 8);
 
-  public static JoystickButton addTurnSpeed = new JoystickButton(joystickMain, 11);
-  public static JoystickButton subtractTurnSpeed = new JoystickButton(joystickMain, 12);
+  public static JoystickButton addTurnSpeed = new JoystickButton(joystickMain, 12);
+  public static JoystickButton subtractTurnSpeed = new JoystickButton(joystickMain, 11);
 
-  public static JoystickButton addDriveSpeed = new JoystickButton(joystickMain, 9);
-  public static JoystickButton subtractDriveSpeed = new JoystickButton(joystickMain, 10);
+  public static JoystickButton addDriveSpeed = new JoystickButton(joystickMain, 10);
+  public static JoystickButton subtractDriveSpeed = new JoystickButton(joystickMain, 9);
 
   /** The container for the robot. Contains subsystems, OI devices, and commands. */
   public RobotContainer() {
