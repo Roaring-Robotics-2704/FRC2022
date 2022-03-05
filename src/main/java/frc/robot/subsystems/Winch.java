@@ -12,7 +12,7 @@ import frc.robot.Constants;
 
 public class Winch extends SubsystemBase {
   /** Creates a new Winch. */
-  private WPI_TalonSRX winchTalon = new WPI_TalonSRX(Constants.c_winchTalonMotor);
+  public WPI_TalonSRX winchTalon = new WPI_TalonSRX(Constants.c_winchTalonMotor);
   private WPI_VictorSPX winchVictor = new WPI_VictorSPX(Constants.c_winchVictorMotor);
 
   private MotorControllerGroup winchMotors = new MotorControllerGroup(winchTalon, winchVictor);
