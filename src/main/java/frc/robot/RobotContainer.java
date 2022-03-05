@@ -39,8 +39,7 @@ public class RobotContainer {
 
   //OI defined
   public static Joystick joystick = new Joystick(Constants.c_joystick);
-  public static JoystickButton downBallActuatorButton = new JoystickButton(joystick, 3);
-  public static JoystickButton upBallAcutatorButton = new JoystickButton(joystick, 5);
+  public static JoystickButton ballAcutatorButton = new JoystickButton(joystick, 5);
  
   public static JoystickButton upWinchButton = new JoystickButton(joystick, 6);
   public static JoystickButton downWinchButton = new JoystickButton(joystick, 4);
@@ -67,8 +66,8 @@ public class RobotContainer {
    * edu.wpi.first.wpilibj2.command.button.JoystickButton}.
    */
   private void configureButtonBindings() {
-    upBallAcutatorButton.whenPressed(new BallCommand());
-    downBallActuatorButton.whenPressed(new BallCommand());
+    ballAcutatorButton.toggleWhenPressed(new BallCommand());
+    
 
     upWinchButton.whenPressed(new WinchCommand());
     downWinchButton.whenPressed(new WinchCommand());
