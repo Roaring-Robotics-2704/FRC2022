@@ -32,6 +32,7 @@ public class RobotContainer {
   public static WinchCommand m_winchCommand = new WinchCommand();
   public static ArmCommand m_armCommand = new ArmCommand();
   public static BallAutonomous ballAuto = new BallAutonomous();
+  public static Auto autonomous = new Auto();
 
   //OI defined
   public static Joystick joystick = new Joystick(Constants.c_joystick);
@@ -81,6 +82,6 @@ public class RobotContainer {
   public Command getAutonomousCommand() {
     // An ExampleCommand will run in autonomous
     //return m_autoCommand;
-    return ballAuto;
+    return autonomous;
   }
 }
