@@ -35,7 +35,7 @@ public class BallCommand extends CommandBase {
     }
     //Ball Servo
     if(RobotContainer.upBallServoButton.get()){
-    RobotContainer.m_ballActuator.changeAngle(0);
+    RobotContainer.m_ballActuator.changeAngle(20);
     }
     else if(RobotContainer.downBallServoButton.get()){
     RobotContainer.m_ballActuator.changeAngle(180);
