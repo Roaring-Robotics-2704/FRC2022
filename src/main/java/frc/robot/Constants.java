@@ -16,8 +16,8 @@ package frc.robot;
 public final class Constants {
 
     //winch position limits-values are placeholders.
-    public static final double maxWinchPos = 2000;
-    public static final double minWinchPos = -2000;
+    public static final double maxWinchPos = 1100;
+    public static final double minWinchPos = -15500;
     
     //number that stay constant throughout the code
     //ports

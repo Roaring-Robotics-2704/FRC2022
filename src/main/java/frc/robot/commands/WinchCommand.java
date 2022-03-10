@@ -31,13 +31,17 @@ public class WinchCommand extends CommandBase {
   public void execute() {
     double encoderValue = RobotContainer.m_winch.winchTalon.getSelectedSensorPosition(0);
 
-    if(RobotContainer.upWinchButton.get() && encoderValue < Constants.maxWinchPos){
+;
+    if(RobotContainer.downWinchButton.get() && encoderValue < Constants.maxWinchPos){
       RobotContainer.m_winch.move(0.5);
+      SmartDashboard.putBoolean("winch moving", true);
     }
-    else if(RobotContainer.downWinchButton.get() && encoderValue > Constants.minWinchPos){
+    else if(RobotContainer.upWinchButton.get() && encoderValue > Constants.minWinchPos){
       RobotContainer.m_winch.move(-0.5);
+      SmartDashboard.putBoolean("winch moving", true);
     }
     else{
+      SmartDashboard.putBoolean("winch moving",false);
       RobotContainer.m_winch.move(0);
     }
     
