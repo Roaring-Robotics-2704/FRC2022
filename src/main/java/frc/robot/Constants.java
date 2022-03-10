@@ -28,6 +28,9 @@ public final class Constants {
     public static int c_winchVictorMotor = 8;
     //arm motor
     public static int c_armMotor = 5;
+    //ball
+    public static int c_ballActuator = 0;
+    public static int c_ballServo = 1;
     
     //joystick
     public static int c_joystickMain = 0;

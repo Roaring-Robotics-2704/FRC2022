@@ -57,6 +57,9 @@ public class RobotContainer {
   public static JoystickButton addDriveSpeed = new JoystickButton(joystickMain, 10);
   public static JoystickButton subtractDriveSpeed = new JoystickButton(joystickMain, 9);
 
+  public static JoystickButton upBallServoButton = new JoystickButton(joystickMain, 1);
+  public static JoystickButton downBallServoButton = new JoystickButton(joystickMain, 2);
+
   /** The container for the robot. Contains subsystems, OI devices, and commands. */
   public RobotContainer() {
     // Configure the button bindings
@@ -90,6 +93,9 @@ public class RobotContainer {
 
     addDriveSpeed.whenPressed(new DriveRobot());
     subtractDriveSpeed.whenPressed(new DriveRobot());
+
+    upBallServoButton.whenPressed(new BallCommand());
+    downBallServoButton.whenPressed(new BallCommand());
   }
 
   /**
