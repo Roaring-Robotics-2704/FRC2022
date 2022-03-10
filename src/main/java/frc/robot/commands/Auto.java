@@ -32,8 +32,8 @@ public class Auto extends CommandBase {
         RobotContainer.m_ballActuator.move(2);
     }
     RobotContainer.m_ballActuator.move(0);
-    while (autoTime.get <= 8) {
-        RobotContainer.m_driveTrain.driveCartesian(0.5, 0, 0);
+    while (autoTime.get() <= 6) {
+        RobotContainer.m_driveTrain.driveCartesian(-0.5, 0, 0);
     }
   }
 
