@@ -5,6 +5,7 @@
 package frc.robot.commands;
 
 import edu.wpi.first.wpilibj2.command.CommandBase;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import frc.robot.RobotContainer;
 import frc.robot.subsystems.BallActuator;
 
@@ -22,15 +23,23 @@ public class BallCommand extends CommandBase {
   // Called every time the scheduler runs while the command is scheduled.
   @Override
   public void execute() {
+    SmartDashboard.putNumber("Servo Angle", RobotContainer.m_ballActuator.ballServo.getAngle());
+    SmartDashboard.putNumber("Servo", RobotContainer.m_ballActuator.ballServo.getPosition());
+    //need to change so toggle
+    //Ball Actuator
     if(RobotContainer.upBallAcutatorButton.get()){
-      RobotContainer.m_ballActuator.move(2);
+      RobotContainer.m_ballActuator.moveActuator(2);
     }
     else if(RobotContainer.downBallActuatorButton.get()){
-      RobotContainer.m_ballActuator.move(-2);
+      RobotContainer.m_ballActuator.moveActuator(-2);
     }
-    //else{
-    //  RobotContainer.m_ballActuator.move(0);
-    //}
+    //Ball Servo
+    if(RobotContainer.upBallServoButton.get()){
+    RobotContainer.m_ballActuator.changeAngle(20);
+    }
+    else if(RobotContainer.downBallServoButton.get()){
+    RobotContainer.m_ballActuator.changeAngle(180);
+    }
 
   }
 

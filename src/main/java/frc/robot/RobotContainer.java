@@ -25,6 +25,7 @@ public class RobotContainer {
   public static BallActuator m_ballActuator = new BallActuator();
   public static Winch m_winch = new Winch();
   public static Arm m_arm = new Arm();
+  public static Camera camera = new Camera();
 
   //Commands defined
   public static DriveRobot m_driveRobot = new DriveRobot();
@@ -35,15 +36,25 @@ public class RobotContainer {
   public static Auto autonomous = new Auto();
 
   //OI defined
-  public static Joystick joystick = new Joystick(Constants.c_joystick);
-  public static JoystickButton downBallActuatorButton = new JoystickButton(joystick, 3);
-  public static JoystickButton upBallAcutatorButton = new JoystickButton(joystick, 5);
+  public static Joystick joystickMain = new Joystick(Constants.c_joystickMain);
+  public static Joystick joystickButton = new Joystick(Constants.c_joystickButton);
+  public static JoystickButton downBallActuatorButton = new JoystickButton(joystickMain, 3);
+  public static JoystickButton upBallAcutatorButton = new JoystickButton(joystickMain, 5);
  
-  public static JoystickButton upWinchButton = new JoystickButton(joystick, 6);
-  public static JoystickButton downWinchButton = new JoystickButton(joystick, 4);
+  public static JoystickButton upWinchButton = new JoystickButton(joystickMain, 6);
+  public static JoystickButton downWinchButton = new JoystickButton(joystickMain, 4);
 
-  public static JoystickButton upArmButton = new JoystickButton(joystick, 7);
-  public static JoystickButton downArmButton = new JoystickButton(joystick, 8);
+  public static JoystickButton upArmButton = new JoystickButton(joystickMain, 7);
+  public static JoystickButton downArmButton = new JoystickButton(joystickMain, 8);
+
+  public static JoystickButton addTurnSpeed = new JoystickButton(joystickMain, 12);
+  public static JoystickButton subtractTurnSpeed = new JoystickButton(joystickMain, 11);
+
+  public static JoystickButton addDriveSpeed = new JoystickButton(joystickMain, 10);
+  public static JoystickButton subtractDriveSpeed = new JoystickButton(joystickMain, 9);
+
+  public static JoystickButton upBallServoButton = new JoystickButton(joystickMain, 1);
+  public static JoystickButton downBallServoButton = new JoystickButton(joystickMain, 2);
 
   /** The container for the robot. Contains subsystems, OI devices, and commands. */
   public RobotContainer() {
@@ -72,6 +83,15 @@ public class RobotContainer {
 
     upArmButton.whenPressed(new ArmCommand());
     downArmButton.whenPressed(new ArmCommand());
+
+    addTurnSpeed.whenPressed(new DriveRobot());
+    subtractTurnSpeed.whenPressed(new DriveRobot());
+
+    addDriveSpeed.whenPressed(new DriveRobot());
+    subtractDriveSpeed.whenPressed(new DriveRobot());
+
+    upBallServoButton.whenPressed(new BallCommand());
+    downBallServoButton.whenPressed(new BallCommand());
   }
 
   /**

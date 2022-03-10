@@ -28,10 +28,17 @@ public final class Constants {
     public static int c_winchVictorMotor = 8;
     //arm motor
     public static int c_armMotor = 5;
+    //ball
+    public static int c_ballActuator = 0;
+    public static int c_ballServo = 1;
     
     //joystick
-    public static int c_joystick = 0;
+    public static int c_joystickMain = 0;
+    public static int c_joystickButton = 1;
     //drivetrain
     public static double c_deadBand = 0.00;
     public static double c_inputScaling = 1;
+
+    public static double c_driveSpeed = 0.6;
+    public static double c_turnSpeed = 0.6;
 }

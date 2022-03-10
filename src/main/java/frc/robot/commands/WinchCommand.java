@@ -22,10 +22,10 @@ public class WinchCommand extends CommandBase {
   @Override
   public void execute() {
     if(RobotContainer.upWinchButton.get()){
-      RobotContainer.m_winch.move(0.6);
+      RobotContainer.m_winch.move(1);
     }
     else if(RobotContainer.downWinchButton.get()){
-      RobotContainer.m_winch.move(-0.6);
+      RobotContainer.m_winch.move(-1);
     }
     else{
       RobotContainer.m_winch.move(0);
