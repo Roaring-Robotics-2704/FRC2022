@@ -17,18 +17,24 @@ public class Auto extends CommandBase {
     addRequirements(RobotContainer.m_ballActuator, RobotContainer.m_driveTrain);
   }
 
+  Timer autoTime = new Timer();
   // Called when the command is initially scheduled.
   @Override
-  public void initialize() {}
+  public void initialize() {
+  }
 
   // Called every time the scheduler runs while the command is scheduled.
   @Override
   public void execute() {
-    RobotContainer.m_ballActuator.move(2);
-    Timer.delay(5);
+    autoTime.reset();
+    autoTime.start();
+    while (autoTime.get() <= 4) {
+        RobotContainer.m_ballActuator.move(2);
+    }
     RobotContainer.m_ballActuator.move(0);
-    RobotContainer.m_driveTrain.driveCartesian(0.1, 0, 0);
-    Timer.delay(1);
+    while (autoTime.get <= 8) {
+        RobotContainer.m_driveTrain.driveCartesian(0.5, 0, 0);
+    }
   }
 
   // Called once the command ends or is interrupted.
