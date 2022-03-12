@@ -18,12 +18,14 @@ public class BallActuator_Servo extends SubsystemBase {
   public Servo ballServo = new Servo(Constants.c_ballServo);
   public double actuatorPostion;
   
+  
   /** Creates a new BallActuator. */
   public BallActuator_Servo() {
   }
   
   public void moveActuator(){
     //Work Actuator Code with Stopping in Between
+  
     if(actuatorPostion == Constants.c_lowerPostion){
       actuatorPostion = Constants.c_upperPostion;
       actuator.set(actuatorPostion);

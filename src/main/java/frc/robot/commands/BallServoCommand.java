@@ -23,6 +23,7 @@ public class BallServoCommand extends CommandBase {
   // Called every time the scheduler runs while the command is scheduled.
   @Override
   public void execute() {
+    SmartDashboard.putNumber("Angle", RobotContainer.m_ballActuator.ballServo.getAngle());
     if(RobotContainer.ballServoButton.get()){
       RobotContainer.m_ballActuator.changeAngle();
     }
