@@ -10,6 +10,7 @@ import com.ctre.phoenix.motorcontrol.StatusFrameEnhanced;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj2.command.CommandBase;
 import frc.robot.Constants;
+import frc.robot.Robot;
 import frc.robot.RobotContainer;
 
 public class WinchCommand extends CommandBase {
@@ -18,6 +19,8 @@ public class WinchCommand extends CommandBase {
     // Use addRequirements() here to declare subsystem dependencies.
     addRequirements(RobotContainer.m_winch);
   }
+
+  public double servoAngle;
 
   // Called when the command is initially scheduled.
   @Override
@@ -31,22 +34,29 @@ public class WinchCommand extends CommandBase {
   public void execute() {
     double encoderValue = RobotContainer.m_winch.winchTalon.getSelectedSensorPosition(0);
 
-;
-    if(RobotContainer.downWinchButton.get() && encoderValue < Constants.maxWinchPos){
-      RobotContainer.m_winch.move(0.5);
+    if(RobotContainer.downWinchButton.get() && encoderValue < Constants.maxWinchPos && RobotContainer.m_winchCommand.servoAngle == 0){
+      RobotContainer.m_winch.move(-0.15);
       SmartDashboard.putBoolean("winch moving", true);
     }
     else if(RobotContainer.upWinchButton.get() && encoderValue > Constants.minWinchPos){
-      RobotContainer.m_winch.move(-0.5);
+      RobotContainer.m_winch.move(0.15);
       SmartDashboard.putBoolean("winch moving", true);
     }
+
     else{
       SmartDashboard.putBoolean("winch moving",false);
       RobotContainer.m_winch.move(0);
     }
-    
+
+    if(RobotContainer.servoWinchButton.get()){
+      servoAngle = 90;
+    }
+
+    RobotContainer.m_winch.setServo(servoAngle);
+
     SmartDashboard.putNumber("winchEncoder",encoderValue);
   }
+
 
   // Called once the command ends or is interrupted.
   @Override

@@ -45,8 +45,10 @@ public class RobotContainer {
   public static JoystickButton downBallActuatorButton = new JoystickButton(joystickMain, 3);
   public static JoystickButton upBallAcutatorButton = new JoystickButton(joystickMain, 5);
  
-  public static JoystickButton upWinchButton = new JoystickButton(joystickMain, 6);
-  public static JoystickButton downWinchButton = new JoystickButton(joystickMain, 4);
+  public static JoystickButton upWinchButton = new JoystickButton(joystickMain, 4);
+  public static JoystickButton downWinchButton = new JoystickButton(joystickMain, 6);
+
+  public static JoystickButton servoWinchButton = new JoystickButton(joystickMain, Constants.WinchServoButton);
 
   public static JoystickButton upArmButton = new JoystickButton(joystickMain, 7);
   public static JoystickButton downArmButton = new JoystickButton(joystickMain, 8);
@@ -57,6 +59,7 @@ public class RobotContainer {
   public static JoystickButton addDriveSpeed = new JoystickButton(joystickMain, 10);
   public static JoystickButton subtractDriveSpeed = new JoystickButton(joystickMain, 9);
 
+  
   /** The container for the robot. Contains subsystems, OI devices, and commands. */
   public RobotContainer() {
     // Configure the button bindings

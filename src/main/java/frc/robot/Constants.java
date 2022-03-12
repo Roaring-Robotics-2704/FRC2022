@@ -16,8 +16,13 @@ package frc.robot;
 public final class Constants {
 
     //winch position limits-values are placeholders.
-    public static final double maxWinchPos = 1100;
-    public static final double minWinchPos = -15500;
+    //public static final double maxWinchPos = 1100;
+    //public static final double minWinchPos = -15500;
+    
+    public static final double maxWinchPos = 1e10;
+    public static final double minWinchPos = -1e10;
+
+    public static final int WinchServoButton = 2;
     
     //number that stay constant throughout the code
     //ports
@@ -34,6 +39,9 @@ public final class Constants {
     //arm motor
     public static int c_armMotor = 5;
     
+
+    public static int winchServo = 2;
+
     //joystick
     public static int c_joystickMain = 0;
     public static int c_joystickButton = 1;
@@ -43,4 +51,5 @@ public final class Constants {
 
     public static double c_driveSpeed = 0.6;
     public static double c_turnSpeed = 0.6;
+
 }

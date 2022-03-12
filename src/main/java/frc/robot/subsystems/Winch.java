@@ -7,6 +7,7 @@ package frc.robot.subsystems;
 import com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX;
 import com.ctre.phoenix.motorcontrol.can.WPI_VictorSPX;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
+import edu.wpi.first.wpilibj.Servo;
 import edu.wpi.first.wpilibj.motorcontrol.MotorControllerGroup;
 import frc.robot.Constants;
 
@@ -16,6 +17,12 @@ public class Winch extends SubsystemBase {
   private WPI_VictorSPX winchVictor = new WPI_VictorSPX(Constants.c_winchVictorMotor);
 
   private MotorControllerGroup winchMotors = new MotorControllerGroup(winchTalon, winchVictor);
+
+  private Servo winchServo = new Servo(Constants.winchServo);
+
+  public void setServo(double angle){
+    winchServo.setAngle(angle);
+  }
 
   public Winch() {
   }
