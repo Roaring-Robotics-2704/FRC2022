@@ -9,10 +9,11 @@ import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.XboxController;
 import edu.wpi.first.wpilibj2.command.button.JoystickButton;
 import frc.robot.commands.ArmCommand;
-import frc.robot.commands.BallCommand;
+import frc.robot.commands.BallActuatorCommand;
+import frc.robot.commands.BallServoCommand;
 import frc.robot.commands.DriveRobot;
 import frc.robot.commands.WinchCommand;
-import frc.robot.subsystems.BallActuator;
+import frc.robot.subsystems.BallActuator_Servo;
 import frc.robot.subsystems.Drivetrain;
 import frc.robot.subsystems.Winch;
 import frc.robot.subsystems.Arm;
@@ -28,23 +29,22 @@ public class RobotContainer {
   // The robot's subsystems and commands are defined here...
   //Subsytems defined
   public static Drivetrain m_driveTrain = new Drivetrain();
-  public static BallActuator m_ballActuator = new BallActuator();
+  public static BallActuator_Servo m_ballActuator = new BallActuator_Servo();
   public static Winch m_winch = new Winch();
   public static Arm m_arm = new Arm();
   public static Camera camera = new Camera();
 
   //Commands defined
   public static DriveRobot m_driveRobot = new DriveRobot();
-  public static BallCommand m_ballCommand = new BallCommand();
+  public static BallActuatorCommand m_ballActuatorCommand = new BallActuatorCommand();
+  public static BallServoCommand m_ballServoCommand = new BallServoCommand();
   public static WinchCommand m_winchCommand = new WinchCommand();
   public static ArmCommand m_armCommand = new ArmCommand();
 
   //OI defined
   public static Joystick joystickMain = new Joystick(Constants.c_joystickMain);
   public static Joystick joystickButton = new Joystick(Constants.c_joystickButton);
-  public static JoystickButton downBallActuatorButton = new JoystickButton(joystickMain, 3);
-  public static JoystickButton upBallAcutatorButton = new JoystickButton(joystickMain, 5);
- 
+
   public static JoystickButton upWinchButton = new JoystickButton(joystickMain, 6);
   public static JoystickButton downWinchButton = new JoystickButton(joystickMain, 4);
 
@@ -57,8 +57,8 @@ public class RobotContainer {
   public static JoystickButton addDriveSpeed = new JoystickButton(joystickMain, 10);
   public static JoystickButton subtractDriveSpeed = new JoystickButton(joystickMain, 9);
 
-  public static JoystickButton upBallServoButton = new JoystickButton(joystickMain, 1);
-  public static JoystickButton downBallServoButton = new JoystickButton(joystickMain, 2);
+  public static JoystickButton ballServoButton = new JoystickButton(joystickMain, 3);
+  public static JoystickButton ballActuatorButton = new JoystickButton(joystickMain, 5);
 
   /** The container for the robot. Contains subsystems, OI devices, and commands. */
   public RobotContainer() {
@@ -67,7 +67,8 @@ public class RobotContainer {
 
     //Connects the subsystem to the command
     m_driveTrain.setDefaultCommand(m_driveRobot);
-    m_ballActuator.setDefaultCommand(m_ballCommand);
+    m_ballActuator.setDefaultCommand(m_ballServoCommand);
+    m_ballActuator.setDefaultCommand(m_ballActuatorCommand);
     m_winch.setDefaultCommand(m_winchCommand);
     m_arm.setDefaultCommand(m_armCommand);
   }
@@ -79,9 +80,6 @@ public class RobotContainer {
    * edu.wpi.first.wpilibj2.command.button.JoystickButton}.
    */
   private void configureButtonBindings() {
-    upBallAcutatorButton.whenPressed(new BallCommand());
-    downBallActuatorButton.whenPressed(new BallCommand());
-
     upWinchButton.whenPressed(new WinchCommand());
     downWinchButton.whenPressed(new WinchCommand());
 
@@ -94,8 +92,9 @@ public class RobotContainer {
     addDriveSpeed.whenPressed(new DriveRobot());
     subtractDriveSpeed.whenPressed(new DriveRobot());
 
-    upBallServoButton.whenPressed(new BallCommand());
-    downBallServoButton.whenPressed(new BallCommand());
+    ballActuatorButton.whenPressed(new BallActuatorCommand());
+    ballServoButton.whenPressed(new BallServoCommand());
+    
   }
 
   /**
