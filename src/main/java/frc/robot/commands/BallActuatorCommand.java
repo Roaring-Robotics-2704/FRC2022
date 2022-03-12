@@ -23,7 +23,7 @@ public class BallActuatorCommand extends CommandBase {
   // Called every time the scheduler runs while the command is scheduled.
   @Override
   public void execute() {
-    SmartDashboard.putNumber("Position", RobotContainer.m_ballActuator.actuator.getPosition());
+    //SmartDashboard.putNumber("Position", RobotContainer.m_ballActuator.actuator.getAngle());
     if(RobotContainer.ballActuatorButton.get()){
       RobotContainer.m_ballActuator.moveActuator();
     }
