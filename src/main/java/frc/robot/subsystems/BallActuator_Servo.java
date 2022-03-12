@@ -10,6 +10,7 @@ import edu.wpi.first.wpilibj.Servo;
 import edu.wpi.first.wpilibj.motorcontrol.PWMTalonFX;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj.PWM;
+import frc.robot.Constants;
 
 public class BallActuator_Servo extends SubsystemBase {
   //public Servo actuator = new Servo(Constants.c_ballActuator);
@@ -19,16 +20,16 @@ public class BallActuator_Servo extends SubsystemBase {
   
   /** Creates a new BallActuator. */
   public BallActuator_Servo() {
-    //actuator.setBounds(2.0, 1.8, 1.5, 1.2, 1.0);
   }
   
   public void moveActuator(){
-    if(actuatorPostion == -0.95){
-      actuatorPostion = 1;
+    //Work Actuator Code with Stopping in Between
+    if(actuatorPostion == Constants.c_lowerPostion){
+      actuatorPostion = Constants.c_upperPostion;
       actuator.set(actuatorPostion);
     }
-    else if(actuatorPostion == 1){
-      actuatorPostion = -0.95;
+    else if(actuatorPostion == Constants.c_upperPostion){
+      actuatorPostion = Constants.c_lowerPostion;
       actuator.set(actuatorPostion);
     }
     
@@ -40,16 +41,15 @@ public class BallActuator_Servo extends SubsystemBase {
     else if(actuatorPostion == 1){
       actuator.setPosition(0);
     } */
-
   }
   
   public void changeAngle(){
     double ballAngle = ballServo.getAngle();
-    if(ballAngle == 20){
-      ballServo.setAngle(180);
+    if(ballAngle == Constants.c_lowerAngle){
+      ballServo.setAngle(Constants.c_upperAngle);
     }
-    else if(ballAngle == 180){
-      ballServo.setAngle(20);
+    else if(ballAngle == Constants.c_upperAngle){
+      ballServo.setAngle(Constants.c_lowerAngle);
     }
   }
   //Working code but not with right angles
