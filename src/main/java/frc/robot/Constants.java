@@ -49,5 +49,5 @@ public final class Constants {
 
     //ballServo
     public static double c_upperAngle = 180;
-    public static double c_lowerAngle = 20;
+    public static double c_lowerAngle = 75;
 }

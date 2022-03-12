@@ -77,7 +77,7 @@ public class Robot extends TimedRobot {
     // this line or comment it out.
     RobotContainer.m_ballActuator.actuatorPostion = -0.95;
     RobotContainer.m_ballActuator.actuator.set(RobotContainer.m_ballActuator.actuatorPostion);
-    RobotContainer.m_ballActuator.ballServo.setAngle(20);
+    RobotContainer.m_ballActuator.ballServo.setAngle(180);
     
     if (m_autonomousCommand != null) {
       m_autonomousCommand.cancel();
