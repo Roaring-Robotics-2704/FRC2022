@@ -29,9 +29,10 @@ public class Auto extends CommandBase {
   public void execute() {
     autoTime.start();
     while (autoTime.get() <= 4) {
-        RobotContainer.m_ballActuator.move(2);
+        RobotContainer.m_ballActuator.moveActuator(2);
+        RobotContainer.m_ballActuator.changeAngle(180);
     }
-    RobotContainer.m_ballActuator.move(0);
+    //RobotContainer.m_ballActuator.moveActuator(0);
     while (autoTime.get() <= 6) {
         RobotContainer.m_driveTrain.driveCartesian(-0.5, 0, 0);
     }
@@ -41,7 +42,7 @@ public class Auto extends CommandBase {
   // Called once the command ends or is interrupted.
   @Override
   public void end(boolean interrupted) {
-    RobotContainer.m_ballActuator.move(0);
+    RobotContainer.m_ballActuator.moveActuator(0);
   }
 
   // Returns true when the command should end.
