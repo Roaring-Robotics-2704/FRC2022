@@ -53,8 +53,11 @@ public class RobotContainer {
   public static JoystickButton addDriveSpeed = new JoystickButton(joystickMain, 10);
   public static JoystickButton subtractDriveSpeed = new JoystickButton(joystickMain, 9);
 
-  public static JoystickButton upBallServoButton = new JoystickButton(joystickMain, 1);
-  public static JoystickButton downBallServoButton = new JoystickButton(joystickMain, 2);
+  public static JoystickButton upBallServoButton = new JoystickButton(joystickMain, 19);
+  public static JoystickButton downBallServoButton = new JoystickButton(joystickMain, 20);
+
+  public static JoystickButton winchServoButton = new JoystickButton(joystickMain, 2);
+
 
   /** The container for the robot. Contains subsystems, OI devices, and commands. */
   public RobotContainer() {
@@ -80,6 +83,7 @@ public class RobotContainer {
 
     upWinchButton.whenPressed(new WinchCommand());
     downWinchButton.whenPressed(new WinchCommand());
+    winchServoButton.whenPressed(new WinchCommand());
 
     upArmButton.whenPressed(new ArmCommand());
     downArmButton.whenPressed(new ArmCommand());
@@ -101,7 +105,7 @@ public class RobotContainer {
    */
   public Command getAutonomousCommand() {
     // An ExampleCommand will run in autonomous
-    //return m_autoCommand;
+   // return zero;
     return autonomous;
   }
 }

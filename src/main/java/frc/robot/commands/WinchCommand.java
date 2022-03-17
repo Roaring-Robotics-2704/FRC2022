@@ -5,7 +5,9 @@
 package frc.robot.commands;
 
 import edu.wpi.first.wpilibj2.command.CommandBase;
+import frc.robot.Robot;
 import frc.robot.RobotContainer;
+import frc.robot.subsystems.Winch;
 
 public class WinchCommand extends CommandBase {
   /** Creates a new WinchCommand. */
@@ -30,7 +32,12 @@ public class WinchCommand extends CommandBase {
     else{
       RobotContainer.m_winch.move(0);
     }
+
+    if(RobotContainer.winchServoButton.get()){
+      RobotContainer.m_winch.changeAngle(90);
+    }
   }
+
 
   // Called once the command ends or is interrupted.
   @Override
