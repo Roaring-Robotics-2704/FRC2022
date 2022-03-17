@@ -11,13 +11,19 @@ import edu.wpi.first.wpilibj.motorcontrol.PWMTalonFX;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj.PWM;
 import frc.robot.Constants;
+import edu.wpi.first.math.filter.Debouncer;
+import edu.wpi.first.wpilibj.DigitalInput;
+
 
 public class BallActuator_Servo extends SubsystemBase {
   //public Servo actuator = new Servo(Constants.c_ballActuator);
   public PWMTalonFX actuator = new PWMTalonFX(Constants.c_ballActuator);
   public Servo ballServo = new Servo(Constants.c_ballServo);
   public double actuatorPostion;
-  
+  public double servoAngle;
+  public DigitalInput input = new DigitalInput(0);
+  Debouncer debouncerActuator = new Debouncer(0.2, Debouncer.DebounceType.kBoth);
+  Debouncer debouncerServo = new Debouncer(0.3, Debouncer.DebounceType.kBoth);
   
   /** Creates a new BallActuator. */
   public BallActuator_Servo() {
@@ -25,14 +31,15 @@ public class BallActuator_Servo extends SubsystemBase {
   
   public void moveActuator(){
     //Work Actuator Code with Stopping in Between
-  
-    if(actuatorPostion == Constants.c_lowerPostion){
-      actuatorPostion = Constants.c_upperPostion;
-      actuator.set(actuatorPostion);
-    }
-    else if(actuatorPostion == Constants.c_upperPostion){
-      actuatorPostion = Constants.c_lowerPostion;
-      actuator.set(actuatorPostion);
+    if(debouncerActuator.calculate(input.get())){
+      if(actuatorPostion == Constants.c_lowerPostion){
+        actuatorPostion = Constants.c_upperPostion;
+        actuator.set(actuatorPostion);
+      }
+      else if(actuatorPostion == Constants.c_upperPostion){
+        actuatorPostion = Constants.c_lowerPostion;
+        actuator.set(actuatorPostion);
+      }
     }
     
     //Working Acutator
@@ -46,24 +53,27 @@ public class BallActuator_Servo extends SubsystemBase {
   }
   
   public void changeAngle(){
-    double ballAngle = ballServo.getAngle();
-    if(ballAngle == Constants.c_lowerAngle){
-      ballServo.setAngle(Constants.c_upperAngle);
+    if(debouncerServo.calculate(input.get())){
+      if(servoAngle == Constants.c_lowerAngle){
+        servoAngle = Constants.c_upperAngle;
+        ballServo.setAngle(servoAngle);
+     }
+      else if(servoAngle == Constants.c_upperAngle){
+        servoAngle = Constants.c_lowerAngle;
+        ballServo.setAngle(servoAngle);
+      }
     }
-    else if(ballAngle == Constants.c_upperAngle){
-      ballServo.setAngle(Constants.c_lowerAngle);
-    }
+  
+    //Working code but not with right angles
+    /*public void changeAngle(){
+     double ballAngle = ballServo.getAngle();
+      if(ballAngle == 180){
+       ballServo.setAngle(0);
+     }
+      else if(ballAngle == 0){
+        ballServo.setAngle(180);
+     }*/
   }
-  //Working code but not with right angles
-  /*public void changeAngle(){
-    double ballAngle = ballServo.getAngle();
-    if(ballAngle == 180){
-      ballServo.setAngle(0);
-    }
-    else if(ballAngle == 0){
-      ballServo.setAngle(180);
-    }
-  }*/
 
   @Override
   public void periodic() {
