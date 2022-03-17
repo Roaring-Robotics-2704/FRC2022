@@ -50,7 +50,7 @@ public class RobotContainer {
   public static JoystickButton upWinchButton = new JoystickButton(joystickMain, 6);
   public static JoystickButton downWinchButton = new JoystickButton(joystickMain, 4);
 
-  public static JoystickButton winchServoButton = new JoystickButton(joystickMain, 2);
+  public static JoystickButton winchServoButton = new JoystickButton(joystickMain, 1);
 
   public static JoystickButton addTurnSpeed = new JoystickButton(joystickMain, 12);
   public static JoystickButton subtractTurnSpeed = new JoystickButton(joystickMain, 11);

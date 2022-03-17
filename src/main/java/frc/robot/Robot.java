@@ -83,7 +83,8 @@ public class Robot extends TimedRobot {
     RobotContainer.m_ballActuator.actuator.set(RobotContainer.m_ballActuator.actuatorPostion);
     RobotContainer.m_ballActuator.servoAngle = 180;
     RobotContainer.m_ballActuator.ballServo.setAngle(RobotContainer.m_ballActuator.servoAngle);
-    
+    RobotContainer.m_winch.winchServo.setAngle(0);
+
     if (m_autonomousCommand != null) {
       m_autonomousCommand.cancel();
     }
