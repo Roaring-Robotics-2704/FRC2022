@@ -30,10 +30,12 @@ public class Auto extends CommandBase {
     autoTime.start();
     while (autoTime.get() <= 4) {
         RobotContainer.m_ballActuator.moveActuatorInput(1);
-        RobotContainer.m_ballActuator.changeAngleInput(75);
+        if (RobotContainer.m_ballActuator.getAngle() < 75) {
+          RobotContainer.m_ballActuator.changeAngleInput(1);
+        }
     }
-    //RobotContainer.m_ballActuator.moveActuator(0);
-    while (autoTime.get() <= 6) {
+    RobotContainer.m_ballActuator.moveActuatorInput(0);
+    while (autoTime.get() <= 5) {
         RobotContainer.m_driveTrain.driveCartesian(-0.5, 0, 0);
     }
     

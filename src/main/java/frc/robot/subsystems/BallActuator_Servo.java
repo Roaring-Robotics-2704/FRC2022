@@ -85,6 +85,10 @@ public void changeAngleInput(int angle){
   ballServo.setAngle(angle);
 }
 
+public double getAngle() {
+  return ballServo.getAngle();
+}
+
   @Override
   public void periodic() {
     // This method will be called once per scheduler run
