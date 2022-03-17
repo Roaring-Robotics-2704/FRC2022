@@ -87,6 +87,7 @@ public class RobotContainer {
   private void configureButtonBindings() {
     upWinchButton.whenPressed(new WinchCommand());
     downWinchButton.whenPressed(new WinchCommand());
+    winchServoButton.whenPressed(new WinchCommand());
 
     addTurnSpeed.whenPressed(new DriveRobot());
     subtractTurnSpeed.whenPressed(new DriveRobot());

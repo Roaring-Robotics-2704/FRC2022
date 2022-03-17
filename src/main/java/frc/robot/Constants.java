@@ -26,6 +26,8 @@ public final class Constants {
     //winch motor
     public static int c_winchTalonMotor = 7;
     public static int c_winchVictorMotor = 8;
+    //winch servo
+    public static int c_winchServo = 9;
     //arm motor
     public static int c_armMotor = 5;
     //ball
