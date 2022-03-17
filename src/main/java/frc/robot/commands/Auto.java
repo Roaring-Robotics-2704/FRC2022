@@ -28,17 +28,15 @@ public class Auto extends CommandBase {
   @Override
   public void execute() {
     autoTime.start();
-    while (autoTime.get() <= 4) {
+    while (autoTime.get() <= 6.1) {
         RobotContainer.m_ballActuator.moveActuatorInput(1);
-        if (RobotContainer.m_ballActuator.getAngle() < 75) {
+        if (RobotContainer.m_ballActuator.getAngle() < 255) {
           RobotContainer.m_ballActuator.changeAngleInput(1);
         }
     }
-    RobotContainer.m_ballActuator.moveActuatorInput(0);
-    while (autoTime.get() <= 5) {
+    while (autoTime.get() <= 7.6) {
         RobotContainer.m_driveTrain.driveCartesian(-0.5, 0, 0);
     }
-    
   }
 
   // Called once the command ends or is interrupted.
