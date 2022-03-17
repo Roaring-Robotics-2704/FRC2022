@@ -28,7 +28,8 @@ public class BallActuator_Servo extends SubsystemBase {
   /** Creates a new BallActuator. */
   public BallActuator_Servo() {
   }
-  
+
+
   public void moveActuator(){
     //Work Actuator Code with Stopping in Between
     if(debouncerActuator.calculate(input.get())){
@@ -52,6 +53,7 @@ public class BallActuator_Servo extends SubsystemBase {
     } */
   }
   
+  
   public void changeAngle(){
     if(debouncerServo.calculate(input.get())){
       if(servoAngle == Constants.c_lowerAngle){
@@ -74,6 +76,14 @@ public class BallActuator_Servo extends SubsystemBase {
         ballServo.setAngle(180);
      }*/
   }
+
+public void moveActuatorInput(double position) {
+  actuator.set(position);
+}
+
+public void changeAngleInput(int angle){
+  ballServo.setAngle(angle);
+}
 
   @Override
   public void periodic() {

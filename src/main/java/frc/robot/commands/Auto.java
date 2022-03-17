@@ -6,7 +6,7 @@ package frc.robot.commands;
 
 import edu.wpi.first.wpilibj2.command.CommandBase;
 import frc.robot.RobotContainer;
-import frc.robot.subsystems.BallActuator;
+import frc.robot.subsystems.BallActuator_Servo;
 import frc.robot.subsystems.Drivetrain;
 import edu.wpi.first.wpilibj.Timer;
 
@@ -29,8 +29,8 @@ public class Auto extends CommandBase {
   public void execute() {
     autoTime.start();
     while (autoTime.get() <= 4) {
-        RobotContainer.m_ballActuator.moveActuator(2);
-        RobotContainer.m_ballActuator.changeAngle(180);
+        RobotContainer.m_ballActuator.moveActuatorInput(1);
+        RobotContainer.m_ballActuator.changeAngleInput(75);
     }
     //RobotContainer.m_ballActuator.moveActuator(0);
     while (autoTime.get() <= 6) {
@@ -42,7 +42,7 @@ public class Auto extends CommandBase {
   // Called once the command ends or is interrupted.
   @Override
   public void end(boolean interrupted) {
-    RobotContainer.m_ballActuator.moveActuator(0);
+    RobotContainer.m_ballActuator.moveActuatorInput(0);
   }
 
   // Returns true when the command should end.

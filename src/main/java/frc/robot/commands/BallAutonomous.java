@@ -6,7 +6,7 @@ package frc.robot.commands;
 
 import edu.wpi.first.wpilibj2.command.CommandBase;
 import frc.robot.RobotContainer;
-import frc.robot.subsystems.BallActuator;
+import frc.robot.subsystems.BallActuator_Servo;
 
 public class BallAutonomous extends CommandBase {
   /** Creates a new BallCommand. */
@@ -22,13 +22,13 @@ public class BallAutonomous extends CommandBase {
   // Called every time the scheduler runs while the command is scheduled.
   @Override
   public void execute() {
-    RobotContainer.m_ballActuator.moveActuator(2);
+    RobotContainer.m_ballActuator.moveActuatorInput(1);
   }
 
   // Called once the command ends or is interrupted.
   @Override
   public void end(boolean interrupted) {
-    RobotContainer.m_ballActuator.moveActuator(0);
+    RobotContainer.m_ballActuator.moveActuatorInput(0);
   }
 
   // Returns true when the command should end.

@@ -59,6 +59,9 @@ public class Robot extends TimedRobot {
   @Override
   public void autonomousInit() {
     m_autonomousCommand = m_robotContainer.getAutonomousCommand();
+    RobotContainer.m_ballActuator.changeAngleInput(180);
+    RobotContainer.m_ballActuator.moveActuatorInput(-0.95);
+
 
     // schedule the autonomous command (example)
     if (m_autonomousCommand != null) {
