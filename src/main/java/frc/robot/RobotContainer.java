@@ -50,6 +50,8 @@ public class RobotContainer {
   public static JoystickButton upWinchButton = new JoystickButton(joystickMain, 6);
   public static JoystickButton downWinchButton = new JoystickButton(joystickMain, 4);
 
+  public static JoystickButton winchServoButton = new JoystickButton(joystickMain, 2);
+
   public static JoystickButton addTurnSpeed = new JoystickButton(joystickMain, 12);
   public static JoystickButton subtractTurnSpeed = new JoystickButton(joystickMain, 11);
 
@@ -87,6 +89,7 @@ public class RobotContainer {
   private void configureButtonBindings() {
     upWinchButton.whenPressed(new WinchCommand());
     downWinchButton.whenPressed(new WinchCommand());
+
     winchServoButton.whenPressed(new WinchCommand());
 
     addTurnSpeed.whenPressed(new DriveRobot());
