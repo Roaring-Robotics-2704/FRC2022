@@ -35,10 +35,19 @@ public final class Constants {
     //joystick
     public static int c_joystickMain = 0;
     public static int c_joystickButton = 1;
+    
     //drivetrain
     public static double c_deadBand = 0.00;
     public static double c_inputScaling = 1;
 
     public static double c_driveSpeed = 0.6;
     public static double c_turnSpeed = 0.6;
+
+    //actuator
+    public static double c_upperPostion = 1;
+    public static double c_lowerPostion = -0.95;
+
+    //ballServo
+    public static double c_upperAngle = 180;
+    public static double c_lowerAngle = 75;
 }

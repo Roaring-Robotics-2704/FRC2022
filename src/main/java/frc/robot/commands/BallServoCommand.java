@@ -5,13 +5,15 @@
 package frc.robot.commands;
 
 import edu.wpi.first.wpilibj2.command.CommandBase;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import frc.robot.RobotContainer;
 
-public class ArmCommand extends CommandBase {
-  /** Creates a new ArmCommand. */
-  public ArmCommand() {
+
+public class BallServoCommand extends CommandBase {
+  /** Creates a new BallServoCommand. */
+  public BallServoCommand() {
     // Use addRequirements() here to declare subsystem dependencies.
-    addRequirements(RobotContainer.m_arm);
+    addRequirements(RobotContainer.m_ballActuator);
   }
 
   // Called when the command is initially scheduled.
@@ -21,15 +23,11 @@ public class ArmCommand extends CommandBase {
   // Called every time the scheduler runs while the command is scheduled.
   @Override
   public void execute() {
-    if(RobotContainer.upArmButton.get()){
-      RobotContainer.m_arm.move(.5);
+    SmartDashboard.putNumber("Angle", RobotContainer.m_ballActuator.ballServo.getAngle());
+    if(RobotContainer.ballServoButton.get()){
+      RobotContainer.m_ballActuator.changeAngle();
     }
-    else if(RobotContainer.downArmButton.get()){
-      RobotContainer.m_arm.move(-.5);
-    }
-    else{
-      RobotContainer.m_arm.move(0);
-    }
+    
   }
 
   // Called once the command ends or is interrupted.
