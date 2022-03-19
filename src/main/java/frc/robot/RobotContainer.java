@@ -8,6 +8,7 @@ import edu.wpi.first.wpilibj.GenericHID;
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.XboxController;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.button.JoystickButton;
 import frc.robot.commands.BallActuatorCommand;
@@ -83,7 +84,8 @@ public class RobotContainer {
     m_ballActuator.setDefaultCommand(m_ballActuatorCommand);
     m_winch.setDefaultCommand(m_winchCommand);
     autoChooser.setDefaultOption("Normal", true);
-    autoChooser.setDefaultOption("Taxi Only", false);
+    autoChooser.addOption("Taxi Only", false);
+    SmartDashboard.putData(autoChooser);
   }
 
   /**
