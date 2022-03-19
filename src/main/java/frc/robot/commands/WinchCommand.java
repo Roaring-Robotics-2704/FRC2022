@@ -8,6 +8,7 @@ import edu.wpi.first.wpilibj2.command.CommandBase;
 import frc.robot.Robot;
 import frc.robot.RobotContainer;
 import frc.robot.subsystems.Winch;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 public class WinchCommand extends CommandBase {
   /** Creates a new WinchCommand. */
@@ -35,6 +36,7 @@ public class WinchCommand extends CommandBase {
 
     if(RobotContainer.winchServoButton.get()){
       RobotContainer.m_winch.changeAngle(90);
+      SmartDashboard.putBoolean("Servo Lock Engaged", true);
     }
   }
 

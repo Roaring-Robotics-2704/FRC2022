@@ -5,6 +5,7 @@
 package frc.robot;
 
 import edu.wpi.first.wpilibj.TimedRobot;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.CommandScheduler;
 import frc.robot.subsystems.BallActuator_Servo;
@@ -79,11 +80,12 @@ public class Robot extends TimedRobot {
     // teleop starts running. If you want the autonomous to
     // continue until interrupted by another command, remove
     // this line or comment it out.
-    RobotContainer.m_ballActuator.actuatorPostion = -0.95;
+    RobotContainer.m_ballActuator.actuatorPostion = -0.50;
     RobotContainer.m_ballActuator.actuator.set(RobotContainer.m_ballActuator.actuatorPostion);
     RobotContainer.m_ballActuator.servoAngle = 180;
     RobotContainer.m_ballActuator.ballServo.setAngle(RobotContainer.m_ballActuator.servoAngle);
     RobotContainer.m_winch.winchServo.setAngle(0);
+    SmartDashboard.putBoolean("Servo Lock Engaged", false);
 
     if (m_autonomousCommand != null) {
       m_autonomousCommand.cancel();

@@ -47,7 +47,7 @@ public final class Constants {
 
     //actuator
     public static double c_upperPostion = 1;
-    public static double c_lowerPostion = -0.95;
+    public static double c_lowerPostion = -0.50;
 
     //ballServo
     public static double c_upperAngle = 180;
