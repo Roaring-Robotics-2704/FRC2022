@@ -80,8 +80,6 @@ public class RobotContainer {
 
     //Connects the subsystem to the command
     m_driveTrain.setDefaultCommand(m_driveRobot);
-    m_ballActuator.setDefaultCommand(m_ballServoCommand);
-    m_ballActuator.setDefaultCommand(m_ballActuatorCommand);
     m_winch.setDefaultCommand(m_winchCommand);
     autoChooser.setDefaultOption("Normal", true);
     autoChooser.addOption("Taxi Only", false);
