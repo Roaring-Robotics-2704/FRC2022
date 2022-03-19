@@ -18,6 +18,8 @@ public class Auto extends CommandBase {
   }
 
   Timer autoTime = new Timer();
+  public Boolean mode = true;
+
   // Called when the command is initially scheduled.
   @Override
   public void initialize() {
@@ -28,14 +30,22 @@ public class Auto extends CommandBase {
   @Override
   public void execute() {
     autoTime.start();
-    while (autoTime.get() <= 9.1) {
+    if (mode) {
+      //Full autonomous routine
+      while (autoTime.get() <= 9.1) {
         RobotContainer.m_ballActuator.moveActuatorInput(1);
         if (RobotContainer.m_ballActuator.getAngle() < 255) {
           RobotContainer.m_ballActuator.changeAngleInput(1);
         }
-    }
-    while (autoTime.get() <= 10.6) {
+      }
+      while (autoTime.get() <= 10.6) {
         RobotContainer.m_driveTrain.driveCartesian(-0.5, 0, 0);
+      }
+    } else {
+      //Taxi only mode
+      while (autoTime.get() <= 1.6) {
+        RobotContainer.m_driveTrain.driveCartesian(-0.5, 0, 0);
+      }
     }
   }
 
