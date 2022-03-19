@@ -79,7 +79,7 @@ public class Robot extends TimedRobot {
     // teleop starts running. If you want the autonomous to
     // continue until interrupted by another command, remove
     // this line or comment it out.
-    RobotContainer.m_ballActuator.actuatorPostion = -0.95;
+    RobotContainer.m_ballActuator.actuatorPostion = -0.50;
     RobotContainer.m_ballActuator.actuator.set(RobotContainer.m_ballActuator.actuatorPostion);
     RobotContainer.m_ballActuator.servoAngle = 180;
     RobotContainer.m_ballActuator.ballServo.setAngle(RobotContainer.m_ballActuator.servoAngle);
