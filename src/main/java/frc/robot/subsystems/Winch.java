@@ -9,6 +9,7 @@ import com.ctre.phoenix.motorcontrol.can.WPI_VictorSPX;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 import edu.wpi.first.wpilibj.motorcontrol.MotorControllerGroup;
 import frc.robot.Constants;
+import edu.wpi.first.wpilibj.Servo;
 
 public class Winch extends SubsystemBase {
   /** Creates a new Winch. */
@@ -17,7 +18,13 @@ public class Winch extends SubsystemBase {
 
   private MotorControllerGroup winchMotors = new MotorControllerGroup(winchTalon, winchVictor);
 
+  public Servo winchServo = new Servo(Constants.c_winchServo);
+ 
   public Winch() {
+  }
+
+  public void changeAngle(double angle){
+    winchServo.setAngle(angle);
   }
 
   public void move(double speed){

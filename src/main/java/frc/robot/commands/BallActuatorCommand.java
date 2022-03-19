@@ -5,12 +5,13 @@
 package frc.robot.commands;
 
 import edu.wpi.first.wpilibj2.command.CommandBase;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
+import frc.robot.Robot;
 import frc.robot.RobotContainer;
-import frc.robot.subsystems.BallActuator;
 
-public class BallCommand extends CommandBase {
+public class BallActuatorCommand extends CommandBase {
   /** Creates a new BallCommand. */
-  public BallCommand() {
+  public BallActuatorCommand() {
     // Use addRequirements() here to declare subsystem dependencies.
     addRequirements(RobotContainer.m_ballActuator);
   }
@@ -22,16 +23,9 @@ public class BallCommand extends CommandBase {
   // Called every time the scheduler runs while the command is scheduled.
   @Override
   public void execute() {
-    if(RobotContainer.upBallAcutatorButton.get()){
-      RobotContainer.m_ballActuator.move(2);
-    }
-    else if(RobotContainer.downBallActuatorButton.get()){
-      RobotContainer.m_ballActuator.move(-2);
-    }
-    //else{
-    //  RobotContainer.m_ballActuator.move(0);
-    //}
-
+    if(RobotContainer.ballActuatorButton.get()){
+      RobotContainer.m_ballActuator.moveActuator();
+    }  
   }
 
   // Called once the command ends or is interrupted.

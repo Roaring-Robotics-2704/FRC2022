@@ -5,8 +5,11 @@
 package frc.robot;
 
 import edu.wpi.first.wpilibj.TimedRobot;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.CommandScheduler;
+import frc.robot.subsystems.BallActuator_Servo;
+import edu.wpi.first.wpilibj.Servo;
 
 /**
  * The VM is configured to automatically run this class, and to call the functions corresponding to
@@ -56,8 +59,11 @@ public class Robot extends TimedRobot {
   /** This autonomous runs the autonomous command selected by your {@link RobotContainer} class. */
   @Override
   public void autonomousInit() {
-    //m_autonomousCommand = m_robotContainer.getAutonomousCommand();
-
+    //robot needs to start in the down postion
+    RobotContainer.m_ballActuator.changeAngleInput(180);
+    RobotContainer.m_ballActuator.moveActuatorInput(-0.95);
+    m_autonomousCommand = m_robotContainer.getAutonomousCommand();
+    
     // schedule the autonomous command (example)
     if (m_autonomousCommand != null) {
       m_autonomousCommand.schedule();
@@ -74,6 +80,13 @@ public class Robot extends TimedRobot {
     // teleop starts running. If you want the autonomous to
     // continue until interrupted by another command, remove
     // this line or comment it out.
+    RobotContainer.m_ballActuator.actuatorPostion = -0.50;
+    RobotContainer.m_ballActuator.actuator.set(RobotContainer.m_ballActuator.actuatorPostion);
+    RobotContainer.m_ballActuator.servoAngle = 180;
+    RobotContainer.m_ballActuator.ballServo.setAngle(RobotContainer.m_ballActuator.servoAngle);
+    RobotContainer.m_winch.winchServo.setAngle(0);
+    SmartDashboard.putBoolean("Servo Lock Engaged", false);
+
     if (m_autonomousCommand != null) {
       m_autonomousCommand.cancel();
     }
@@ -81,7 +94,8 @@ public class Robot extends TimedRobot {
 
   /** This function is called periodically during operator control. */
   @Override
-  public void teleopPeriodic() {}
+  public void teleopPeriodic() {
+  }
 
   @Override
   public void testInit() {

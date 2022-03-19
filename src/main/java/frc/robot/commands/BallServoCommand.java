@@ -5,16 +5,15 @@
 package frc.robot.commands;
 
 import edu.wpi.first.wpilibj2.command.CommandBase;
-import frc.robot.Robot;
-import frc.robot.RobotContainer;
-import frc.robot.subsystems.Winch;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
+import frc.robot.RobotContainer;
 
-public class WinchCommand extends CommandBase {
-  /** Creates a new WinchCommand. */
-  public WinchCommand() {
+
+public class BallServoCommand extends CommandBase {
+  /** Creates a new BallServoCommand. */
+  public BallServoCommand() {
     // Use addRequirements() here to declare subsystem dependencies.
-    addRequirements(RobotContainer.m_winch);
+    addRequirements(RobotContainer.m_ballActuator);
   }
 
   // Called when the command is initially scheduled.
@@ -24,22 +23,12 @@ public class WinchCommand extends CommandBase {
   // Called every time the scheduler runs while the command is scheduled.
   @Override
   public void execute() {
-    if(RobotContainer.upWinchButton.get()){
-      RobotContainer.m_winch.move(1);
+    SmartDashboard.putNumber("Angle", RobotContainer.m_ballActuator.ballServo.getAngle());
+    if(RobotContainer.ballServoButton.get()){
+      RobotContainer.m_ballActuator.changeAngle();
     }
-    else if(RobotContainer.downWinchButton.get()){
-      RobotContainer.m_winch.move(-1);
-    }
-    else{
-      RobotContainer.m_winch.move(0);
-    }
-
-    if(RobotContainer.winchServoButton.get()){
-      RobotContainer.m_winch.changeAngle(90);
-      SmartDashboard.putBoolean("Servo Lock Engaged", true);
-    }
+    
   }
-
 
   // Called once the command ends or is interrupted.
   @Override
