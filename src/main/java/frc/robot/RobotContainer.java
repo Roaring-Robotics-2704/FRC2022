@@ -85,7 +85,7 @@ public class RobotContainer {
     m_winch.setDefaultCommand(m_winchCommand);
     autoChooser.setDefaultOption("Normal", true);
     autoChooser.addOption("Taxi Only", false);
-    SmartDashboard.putData(autoChooser);
+    SmartDashboard.putData("Autonomous Mode", autoChooser);
   }
 
   /**
