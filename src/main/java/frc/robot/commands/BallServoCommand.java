@@ -24,10 +24,8 @@ public class BallServoCommand extends CommandBase {
   @Override
   public void execute() {
     SmartDashboard.putNumber("Angle", RobotContainer.m_ballActuator.ballServo.getAngle());
-    if(RobotContainer.ballServoButton.get()){
-      RobotContainer.m_ballActuator.changeAngle();
-    }
-    
+    RobotContainer.m_ballActuator.changeAngle();   
+    isFinished(); 
   }
 
   // Called once the command ends or is interrupted.
@@ -37,6 +35,6 @@ public class BallServoCommand extends CommandBase {
   // Returns true when the command should end.
   @Override
   public boolean isFinished() {
-    return false;
+    return true;
   }
 }

@@ -7,6 +7,8 @@ package frc.robot;
 import edu.wpi.first.wpilibj.GenericHID;
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.XboxController;
+import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.button.JoystickButton;
 import frc.robot.commands.BallActuatorCommand;
@@ -68,6 +70,9 @@ public class RobotContainer {
   public static JoystickButton addDriveSpeedSecondary = new JoystickButton(joystickExtraButton, 10);
   public static JoystickButton subtractDriveSpeedSecondary  = new JoystickButton(joystickExtraButton, 9);
 
+  //Chooser for autonomous
+  SendableChooser<Boolean> autoChooser = new SendableChooser<>();
+
   /** The container for the robot. Contains subsystems, OI devices, and commands. */
   public RobotContainer() {
     // Configure the button bindings
@@ -75,9 +80,10 @@ public class RobotContainer {
 
     //Connects the subsystem to the command
     m_driveTrain.setDefaultCommand(m_driveRobot);
-    m_ballActuator.setDefaultCommand(m_ballServoCommand);
-    m_ballActuator.setDefaultCommand(m_ballActuatorCommand);
     m_winch.setDefaultCommand(m_winchCommand);
+    autoChooser.setDefaultOption("Normal", true);
+    autoChooser.addOption("Taxi Only", false);
+    SmartDashboard.putData("Autonomous Mode", autoChooser);
   }
 
   /**
@@ -111,6 +117,7 @@ public class RobotContainer {
   public Command getAutonomousCommand() {
     // An ExampleCommand will run in autonomous
     //return m_autoCommand;
+    m_autonomous.mode = autoChooser.getSelected();
     return m_autonomous;
   }
 }

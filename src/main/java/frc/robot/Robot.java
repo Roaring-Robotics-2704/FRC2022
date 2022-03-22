@@ -95,6 +95,7 @@ public class Robot extends TimedRobot {
   /** This function is called periodically during operator control. */
   @Override
   public void teleopPeriodic() {
+    SmartDashboard.putNumber("Actuator position", RobotContainer.m_ballActuator.actuator.get());
   }
 
   @Override
