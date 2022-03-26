@@ -24,10 +24,10 @@ public class WinchCommand extends CommandBase {
   // Called every time the scheduler runs while the command is scheduled.
   @Override
   public void execute() {
-    if(RobotContainer.upWinchButton.get()){
+    if(RobotContainer.downWinchButton.get()){
       RobotContainer.m_winch.move(1);
     }
-    else if(RobotContainer.downWinchButton.get()){
+    else if(RobotContainer.upWinchButton.get()){
       RobotContainer.m_winch.move(-1);
     }
     else{
