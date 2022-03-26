@@ -4,13 +4,12 @@
 
 package frc.robot.subsystems;
 
-import edu.wpi.first.wpilibj.drive.MecanumDrive;
-import edu.wpi.first.wpilibj2.command.SubsystemBase;
 import frc.robot.Constants;
 
-import com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX;
-import com.ctre.phoenix.motorcontrol.InvertType;
+import edu.wpi.first.wpilibj.drive.MecanumDrive;
+import edu.wpi.first.wpilibj2.command.SubsystemBase;
 
+import com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX;
 
 
 public class Drivetrain extends SubsystemBase {
@@ -22,7 +21,6 @@ public class Drivetrain extends SubsystemBase {
     private WPI_TalonSRX m_frontRight = new WPI_TalonSRX(Constants.c_frontRightMotor);
     private WPI_TalonSRX m_backRight = new WPI_TalonSRX(Constants.c_backRightMotor);
 
-    
     //Mecanum Drive Consturctor 
     private MecanumDrive drive = new MecanumDrive(m_frontLeft, m_backLeft, m_frontRight, m_backRight);
 
@@ -37,7 +35,6 @@ public class Drivetrain extends SubsystemBase {
     //drive.driveCartesian(-strafeSpeed, movementSpeed, turningSpeed);
     //what we did for FRC 2020
     drive.driveCartesian(yAxisSpeed, -xAxisSpeed, zAxisSpeed);
-    
   }
 
   @Override

@@ -4,65 +4,64 @@
 
 package frc.robot.commands;
 
-import edu.wpi.first.wpilibj2.command.CommandBase;
-import edu.wpi.first.wpilibj.Joystick;
-import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
-import frc.robot.RobotContainer;
 import frc.robot.Constants;
+import frc.robot.RobotContainer;
+
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
+import edu.wpi.first.wpilibj2.command.CommandBase;
+
 
 public class DriveRobot extends CommandBase {
   /** Creates a new DriveRobot. */
   public DriveRobot() {
     // Use addRequirements() here to declare subsystem dependencies.
     addRequirements(RobotContainer.m_driveTrain);
-    
-    
   }
   
   // Called when the command is initially scheduled.
   @Override
-  public void initialize() {
-    
+  public void initialize() {  
   }
   //don't need to put anything in here
 
   // Called every time the scheduler runs while the command is scheduled.
   @Override
-  // make sure can't go negative
-  // make it so it is press once and moves up on incrment, 0.2 !
-  // more on the inside so switch button !
-  // 0.4 !
-  
   public void execute() {
+    //Drive Speed
+    //increasing drive speed
     SmartDashboard.putNumber("DriveSpeed", Constants.c_driveSpeed);
     if(RobotContainer.addDriveSpeed.get() || RobotContainer.addDriveSpeedSecondary.get()){
-      Constants.c_driveSpeed = Constants.c_driveSpeed + 0.2;
+      Constants.c_driveSpeed = Constants.c_driveSpeed + Constants.c_speedIncrementIncrease;
       SmartDashboard.putNumber("DriveSpeed", Constants.c_driveSpeed);
-      if(Constants.c_driveSpeed >= 2){
-        Constants.c_driveSpeed = 2;
+      if(Constants.c_driveSpeed >= Constants.c_upperSpeedLimit){
+        Constants.c_driveSpeed = Constants.c_upperSpeedLimit;
       }
     }
+    //decreasing drive speed
     if(RobotContainer.subtractDriveSpeed.get() || RobotContainer.subtractDriveSpeedSecondary.get()){
-      Constants.c_driveSpeed = Constants.c_driveSpeed - 0.2;
+      Constants.c_driveSpeed = Constants.c_driveSpeed + Constants.c_speedIncrementDecrease;
       SmartDashboard.putNumber("DriveSpeed", Constants.c_driveSpeed);
-      if(Constants.c_driveSpeed <= 0.4){
-        Constants.c_driveSpeed = 0.4;
+      if(Constants.c_driveSpeed <= Constants.c_lowerSpeedLimit){
+        Constants.c_driveSpeed = Constants.c_lowerSpeedLimit;
       }
     }
 
+    //Turning Speed
+    //increasing turning speed
     SmartDashboard.putNumber("TurnSpeed", Constants.c_turnSpeed);
     if(RobotContainer.addTurnSpeed.get() || RobotContainer.addTurnSpeedSecondary.get()){
-      Constants.c_turnSpeed = Constants.c_turnSpeed + 0.2;
+      Constants.c_turnSpeed = Constants.c_turnSpeed + Constants.c_speedIncrementIncrease;
       SmartDashboard.putNumber("TurnSpeed", Constants.c_turnSpeed);
-      if(Constants.c_turnSpeed >= 2){
-        Constants.c_turnSpeed = 2;
+      if(Constants.c_turnSpeed >= Constants.c_upperSpeedLimit){
+        Constants.c_turnSpeed = Constants.c_upperSpeedLimit;
       }
     }
+    //decreasing turning speed
     if(RobotContainer.subtractTurnSpeed.get() || RobotContainer.subtractTurnSpeedSecondary.get()){
-      Constants.c_turnSpeed = Constants.c_turnSpeed - 0.2;
+      Constants.c_turnSpeed = Constants.c_turnSpeed + Constants.c_speedIncrementDecrease;
       SmartDashboard.putNumber("TurnSpeed", Constants.c_turnSpeed);
-      if(Constants.c_turnSpeed <= 0.4){
-        Constants.c_turnSpeed = 0.4;
+      if(Constants.c_turnSpeed <= Constants.c_lowerSpeedLimit){
+        Constants.c_turnSpeed = Constants.c_lowerSpeedLimit;
       }
     }
 
@@ -73,14 +72,16 @@ public class DriveRobot extends CommandBase {
     double joystickXInput = -RobotContainer.joystickMain.getX()*Constants.c_driveSpeed;
     double joystickYInput = -RobotContainer.joystickMain.getY()*Constants.c_driveSpeed;
     double joystickZInput = RobotContainer.joystickMain.getZ()*Constants.c_turnSpeed;
-    double deadzone = 0.2;
-    double turnDeadzone = 0.25;
+    double deadzone = Constants.c_deadBand;
+    double turnDeadzone = Constants.c_turningDeadBand;
 
     if (Math.abs(RobotContainer.joystickMain.getX()) < deadzone) {
       joystickXInput = 0;
-    } else if (Math.abs(RobotContainer.joystickMain.getY()) < deadzone) {
+    } 
+    else if (Math.abs(RobotContainer.joystickMain.getY()) < deadzone) {
       joystickYInput = 0;
-    } else if (Math.abs(RobotContainer.joystickMain.getZ()) < turnDeadzone) {
+    } 
+    else if (Math.abs(RobotContainer.joystickMain.getZ()) < turnDeadzone) {
       joystickZInput = 0;
     }
     

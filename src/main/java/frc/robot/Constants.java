@@ -15,41 +15,53 @@ package frc.robot;
 
 public final class Constants {
     //number that stay constant throughout the code
-    //ports
-    //drive motors
-    public static int c_frontRightMotor = 2;
-    public static int c_frontLeftMotor = 1;
-    public static int c_backRightMotor = 4;
-    // use to be 3 but I changed it for the actual 2022 robot 
-    public static int c_backLeftMotor = 3;
-    // use to be 4 but I changed it for the actual 2022 robot
-    //winch motor
-    public static int c_winchTalonMotor = 7;
-    public static int c_winchVictorMotor = 8;
-    //winch servo
-    public static int c_winchServo = 9;
-    //arm motor
-    public static int c_armMotor = 5;
-    //ball
-    public static int c_ballActuator = 0;
-    public static int c_ballServo = 1;
-    
     //joystick
     public static int c_joystickMain = 0;
     public static int c_joystickButton = 1;
-    
-    //drivetrain
-    public static double c_deadBand = 0.00;
-    public static double c_inputScaling = 1;
 
+    //drive train
+    //motor ports
+    public static int c_frontLeftMotor = 1;
+    public static int c_frontRightMotor = 2;
+    public static int c_backLeftMotor = 3;
+    public static int c_backRightMotor = 4;  
+    //driving corrections
+    public static double c_deadBand = 0.2;
+    public static double c_turningDeadBand = 0.25;
+    //driver speed contorl
     public static double c_driveSpeed = 0.6;
     public static double c_turnSpeed = 0.6;
+    public static double c_speedIncrementIncrease = 0.2;
+    public static double c_speedIncrementDecrease = -0.2;
+    public static double c_upperSpeedLimit = 2.0;
+    public static double c_lowerSpeedLimit = 0.4;
 
-    //actuator
-    public static double c_upperPostion = 1;
-    public static double c_lowerPostion = -0.50;
+    //winch motor
+    //motor ports
+    public static int c_winchTalonMotor = 7;
+    public static int c_winchVictorMotor = 8;
+    public static double c_winchSpeedUp = 1;
+    public static double c_winchSpeedDown = -1;
+    
+    //winch servo
+    //ports 
+    public static int c_winchServo = 9;
+    //angles
+    public static int c_lockedAngle = 90;
+    public static int c_unlockedAngle = 0;
+    
+    //ball servo
+    //port
+    public static int c_ballServo = 1;
+    // angles
+    public static double c_closedAngle = 180;
+    public static double c_openedAngle = 75;
 
-    //ballServo
-    public static double c_upperAngle = 180;
-    public static double c_lowerAngle = 75;
+    //ball actuator
+    //ports
+    public static int c_ballActuator = 0;
+    //positions
+    public static double c_outPostion = 1;
+    public static double c_inPostion = -0.50;
+
 }

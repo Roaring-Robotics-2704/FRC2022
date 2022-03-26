@@ -4,17 +4,18 @@
 
 package frc.robot.commands;
 
-import edu.wpi.first.wpilibj2.command.CommandBase;
+import frc.robot.Constants;
 import frc.robot.RobotContainer;
-import frc.robot.subsystems.BallActuator_Servo;
-import frc.robot.subsystems.Drivetrain;
+
 import edu.wpi.first.wpilibj.Timer;
+
+import edu.wpi.first.wpilibj2.command.CommandBase;
 
 
 public class Auto extends CommandBase {
   public Auto() {
     // Use addRequirements() here to declare subsystem dependencies.
-    addRequirements(RobotContainer.m_ballActuator, RobotContainer.m_driveTrain);
+    addRequirements(RobotContainer.m_ballActuatorServo, RobotContainer.m_driveTrain);
   }
 
   Timer autoTime = new Timer();
@@ -30,12 +31,11 @@ public class Auto extends CommandBase {
   @Override
   public void execute() {
     autoTime.start();
-    if (mode) {
-      //Full autonomous routine
-      while (autoTime.get() <= 9.1) {
-        RobotContainer.m_ballActuator.moveActuatorInput(1);
-        if (RobotContainer.m_ballActuator.getAngle() < 255) {
-          RobotContainer.m_ballActuator.changeAngleInput(1);
+   if (mode) {
+     while (autoTime.get() <= 9.1) {
+        RobotContainer.m_ballActuatorServo.moveActuatorInput(Constants.c_outPostion);
+        if (RobotContainer.m_ballActuatorServo.getAngle() < 255) {
+          RobotContainer.m_ballActuatorServo.changeAngleInput(1);
         }
       }
       while (autoTime.get() <= 10.6) {
@@ -52,7 +52,7 @@ public class Auto extends CommandBase {
   // Called once the command ends or is interrupted.
   @Override
   public void end(boolean interrupted) {
-    RobotContainer.m_ballActuator.moveActuatorInput(0);
+    RobotContainer.m_ballActuatorServo.moveActuatorInput(0);
   }
 
   // Returns true when the command should end.

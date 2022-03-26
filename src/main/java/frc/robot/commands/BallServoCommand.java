@@ -4,16 +4,17 @@
 
 package frc.robot.commands;
 
-import edu.wpi.first.wpilibj2.command.CommandBase;
-import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import frc.robot.RobotContainer;
+
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
+import edu.wpi.first.wpilibj2.command.CommandBase;
 
 
 public class BallServoCommand extends CommandBase {
   /** Creates a new BallServoCommand. */
   public BallServoCommand() {
     // Use addRequirements() here to declare subsystem dependencies.
-    addRequirements(RobotContainer.m_ballActuator);
+    addRequirements(RobotContainer.m_ballActuatorServo);
   }
 
   // Called when the command is initially scheduled.
@@ -23,9 +24,10 @@ public class BallServoCommand extends CommandBase {
   // Called every time the scheduler runs while the command is scheduled.
   @Override
   public void execute() {
-    SmartDashboard.putNumber("Angle", RobotContainer.m_ballActuator.ballServo.getAngle());
-    RobotContainer.m_ballActuator.changeAngle();   
-    isFinished(); 
+    SmartDashboard.putNumber("Angle", RobotContainer.m_ballActuatorServo.ballServo.getAngle());
+    if(RobotContainer.ballServoButton.get()){
+      RobotContainer.m_ballActuatorServo.changeAngle();
+    }
   }
 
   // Called once the command ends or is interrupted.

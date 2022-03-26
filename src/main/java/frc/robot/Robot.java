@@ -8,8 +8,8 @@ import edu.wpi.first.wpilibj.TimedRobot;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.CommandScheduler;
-import frc.robot.subsystems.BallActuator_Servo;
-import edu.wpi.first.wpilibj.Servo;
+import frc.robot.RobotContainer;
+
 
 /**
  * The VM is configured to automatically run this class, and to call the functions corresponding to
@@ -60,8 +60,8 @@ public class Robot extends TimedRobot {
   @Override
   public void autonomousInit() {
     //robot needs to start in the down postion
-    RobotContainer.m_ballActuator.changeAngleInput(180);
-    RobotContainer.m_ballActuator.moveActuatorInput(-0.95);
+    RobotContainer.m_ballActuatorServo.changeAngleInput(Constants.c_closedAngle);
+    RobotContainer.m_ballActuatorServo.moveActuatorInput(Constants.c_inPostion);
     m_autonomousCommand = m_robotContainer.getAutonomousCommand();
     
     // schedule the autonomous command (example)
@@ -80,12 +80,16 @@ public class Robot extends TimedRobot {
     // teleop starts running. If you want the autonomous to
     // continue until interrupted by another command, remove
     // this line or comment it out.
-    RobotContainer.m_ballActuator.actuatorPostion = -0.50;
-    RobotContainer.m_ballActuator.actuator.set(RobotContainer.m_ballActuator.actuatorPostion);
-    RobotContainer.m_ballActuator.servoAngle = 180;
-    RobotContainer.m_ballActuator.ballServo.setAngle(RobotContainer.m_ballActuator.servoAngle);
-    RobotContainer.m_winch.winchServo.setAngle(0);
-    SmartDashboard.putBoolean("Servo Lock Engaged", false);
+    //initalized the actuator to it lower postion, so it starts in
+    RobotContainer.m_ballActuatorServo.actuatorPostion = Constants.c_inPostion;
+    RobotContainer.m_ballActuatorServo.actuator.set(RobotContainer.m_ballActuatorServo.actuatorPostion);
+    
+    //intialized the acutator to it upper angle, so it starts closed
+    RobotContainer.m_ballActuatorServo.servoAngle = Constants.c_closedAngle;
+    RobotContainer.m_ballActuatorServo.ballServo.setAngle(RobotContainer.m_ballActuatorServo.servoAngle);
+    
+    //intialized the winch servo so the lock is unlocked
+    RobotContainer.m_winch.winchServo.setAngle(Constants.c_unlockedAngle);
 
     if (m_autonomousCommand != null) {
       m_autonomousCommand.cancel();
@@ -95,7 +99,7 @@ public class Robot extends TimedRobot {
   /** This function is called periodically during operator control. */
   @Override
   public void teleopPeriodic() {
-    SmartDashboard.putNumber("Actuator position", RobotContainer.m_ballActuator.actuator.get());
+    SmartDashboard.putNumber("Actuator position", RobotContainer.m_ballActuatorServo.actuator.get());
   }
 
   @Override

@@ -4,11 +4,10 @@
 
 package frc.robot.commands;
 
-import edu.wpi.first.wpilibj2.command.CommandBase;
-import frc.robot.Robot;
+import frc.robot.Constants;
 import frc.robot.RobotContainer;
-import frc.robot.subsystems.Winch;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
+import edu.wpi.first.wpilibj2.command.CommandBase;
 
 public class WinchCommand extends CommandBase {
   /** Creates a new WinchCommand. */
@@ -24,22 +23,23 @@ public class WinchCommand extends CommandBase {
   // Called every time the scheduler runs while the command is scheduled.
   @Override
   public void execute() {
+    //Winch
     if(RobotContainer.upWinchButton.get()){
-      RobotContainer.m_winch.move(1);
+      RobotContainer.m_winch.move(Constants.c_winchSpeedUp);
     }
     else if(RobotContainer.downWinchButton.get()){
-      RobotContainer.m_winch.move(-1);
+      RobotContainer.m_winch.move(Constants.c_winchSpeedDown);
     }
     else{
       RobotContainer.m_winch.move(0);
     }
 
+    //Winch Servo
     if(RobotContainer.winchServoButton.get()){
-      RobotContainer.m_winch.changeAngle(90);
+      RobotContainer.m_winch.changeAngle(Constants.c_lockedAngle);
       SmartDashboard.putBoolean("Servo Lock Engaged", true);
     }
   }
-
 
   // Called once the command ends or is interrupted.
   @Override
