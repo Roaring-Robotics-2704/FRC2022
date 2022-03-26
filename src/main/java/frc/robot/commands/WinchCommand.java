@@ -35,7 +35,7 @@ public class WinchCommand extends CommandBase {
     }
 
     if(RobotContainer.winchServoButton.get()){
-      RobotContainer.m_winch.changeAngle(90);
+      RobotContainer.m_winch.changeAngle(0);
       SmartDashboard.putBoolean("Servo Lock Engaged", true);
     }
   }

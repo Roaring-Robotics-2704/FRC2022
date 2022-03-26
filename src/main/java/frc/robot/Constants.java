@@ -46,10 +46,10 @@ public final class Constants {
     public static double c_turnSpeed = 0.6;
 
     //actuator
-    public static double c_upperPostion = 1;
+    public static double c_upperPostion = 0.75;
     public static double c_lowerPostion = -0.50;
 
     //ballServo
     public static double c_upperAngle = 180;
-    public static double c_lowerAngle = 75;
+    public static double c_lowerAngle = 45;
 }

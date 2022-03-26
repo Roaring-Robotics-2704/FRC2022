@@ -49,8 +49,8 @@ public class RobotContainer {
   public static Joystick joystickExtraButton = new Joystick(Constants.c_joystickButton);
  
   //Main Joystick
-  public static JoystickButton upWinchButton = new JoystickButton(joystickMain, 6);
-  public static JoystickButton downWinchButton = new JoystickButton(joystickMain, 4);
+  public static JoystickButton upWinchButton = new JoystickButton(joystickMain, 4);
+  public static JoystickButton downWinchButton = new JoystickButton(joystickMain, 6);
 
   public static JoystickButton winchServoButton = new JoystickButton(joystickMain, 1);
 
