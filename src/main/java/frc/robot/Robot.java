@@ -96,6 +96,7 @@ public class Robot extends TimedRobot {
   @Override
   public void teleopPeriodic() {
     SmartDashboard.putNumber("Actuator position", RobotContainer.m_ballActuator.actuator.get());
+    SmartDashboard.putNumber("Ball Servo Angle", RobotContainer.m_ballActuator.ballServo.getAngle());
   }
 
   @Override
